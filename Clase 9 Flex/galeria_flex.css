@@ -1,0 +1,56 @@
+body{
+    display: flex;
+    background-color: chocolate;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    display: flex;
+    color: black;
+    font-size: 4vh;
+    margin: 4px;
+    padding: 2px;
+    justify-content: center;
+}
+
+
+.galeria{
+    display: flex;
+    padding: 5px;
+}
+
+
+img {
+    display: flex;
+    margin: 8px;
+    width: 95%;
+    flex: 25%;        
+}
+
+
+footer{
+    display: flex;
+    background-color: blueviolet;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    justify-content: end;
+    margin: 5px;
+    font-size: 4vh;
+}
+
+
+@media (max-width: 800px) {
+    .sub_3, .sub_4 {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .sub_2, .sub_3, .sub_4{
+        display: none;
+    }
+}

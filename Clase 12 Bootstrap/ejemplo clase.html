@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gaspar Martin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="row bg-primary text-white fixed-top" style="height: 25vh;"> 
+            
+            <picture>
+                <source media="(max-width: 576px)" srcset="https://loremflickr.com/g/576/200/paris">
+                <source media="(max-width: 1200px)" srcset="https://loremflickr.com/g/1200/400/paris">
+                <img src="https://loremflickr.com/g/2000/600/paris" alt="Cabecera" style="height: 25vh; overflow: hidden;">
+            </picture>
+        </header>
+        
+        <nav class="row bg-dark text-white p-3">Menu</nav>
+        
+        <main class="row bg-secondary text-white">
+            <section class="col-md-9 col-sm-12">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo odio modi sapiente minus iusto laboriosam dignissimos, est maiores voluptatibus vero iste expedita ipsum, in corrupti. Quas eveniet tempora dolorem aliquid.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos eum aliquam quo harum aperiam sequi minima ab facilis! Quas consequuntur vitae harum ducimus voluptatum nihil, iure ex quaerat fuga? Velit.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta voluptate quibusdam voluptates blanditiis nulla dolorem aperiam iure, reprehenderit ex in, totam ab aspernatur alias rerum mollitia recusandae nihil non unde.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aspernatur expedita iusto distinctio amet numquam sapiente quae, labore, hic eius consequatur a repellendus, ipsam aperiam illo culpa? Tempora, dignissimos velit?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium perferendis soluta accusamus autem voluptatem, in voluptate praesentium itaque, officiis sequi quibusdam accusantium at magnam saepe ea reiciendis, voluptates error aspernatur?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni cumque deleniti neque, veritatis quo hic distinctio provident tenetur dolores blanditiis perferendis, quod molestias debitis ab qui maxime! Ad, possimus nulla.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo tenetur velit dolores. Nihil commodi provident exercitationem? Unde ipsa, incidunt fugiat tempora, dignissimos sit animi dolores dicta atque sunt facere neque.</p>
+
+            </section>
+
+            <!-- <aside class="col-md-3 col-sm-12 bg-info"> -->
+            <aside class="col-md-3 d-none d-md-block bg-info">    
+                Publicidad
+            </aside>
+
+        </main>
+
+        <footer class="row bg-primary text-white p-3 fixed-bottom">
+            Pie
+        </footer>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

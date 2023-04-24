@@ -1,0 +1,53 @@
+html {
+    color: white;
+    background-color: #333333;
+    font-family: Arial;
+}
+
+/* tambien puedo poner: header, footer */
+header { 
+    background-color: #222222;
+    font-size: 2em;
+    padding: 16px;
+    margin: 16px;
+    height: 30px;
+
+}
+
+nav{
+    background-color: rebeccapurple;
+    padding: 8px;
+    margin: 4px;
+}
+
+article{
+    background-color: black;
+    padding: 5px;
+}
+
+footer{
+    background-color: rebeccapurple;
+    padding: 8px;
+    margin: 4px;
+}
+
+.frm_login{
+    background-color: #111111;
+    padding: 8px;
+    border: 1px solid #ffffff;
+}
+
+input{
+    background-color: #cccccc;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 8px;
+}
+
+button{
+    background-color: aqua;
+    color: #ffffff;
+    padding: 4px;
+    border-radius: 4px;
+    text-align: right;
+}

@@ -1,0 +1,77 @@
+body {
+    color: white;
+    background-color: #333333;
+    font-family: Arial;
+    margin: 0;
+}
+
+header {
+    color: aliceblue;
+    padding: 0;
+    margin: 0;
+    height: 25vh;
+    background-image: url(https://media.istockphoto.com/id/1351472472/es/foto/peque%C3%B1a-r%C3%BAcula-muda-lijando-de-cerca-sobre-fondo-negro.jpg?b=1&s=170667a&w=0&k=20&c=umAQ2WYImf8LXjEFP9d-uTWHy85LHweLgsPlGj7pZks=);
+    background-size: contain;
+}
+
+header img {
+    width: 100%;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 20px;
+    padding: 8px;
+    background-color: #f60;
+    width: 100%;
+    z-index: 10;
+}
+
+main {
+    display: flex; /*esto es lo que posiciona*/
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 32px;
+}
+
+article {
+    border: 1px solid white;
+    width: 300px;
+    padding: 16px;
+    margin: 8px;
+    margin-bottom: 32px;
+}
+
+h1 {
+    color: black;
+    background-color: orange;
+    padding: 4px;
+}
+
+.btn {
+    position: relative;
+    color: black;
+    background-color: orange;
+    padding: 8px;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    right: 16px;
+}
+
+.enlace1 {
+    color: black;   
+    text-decoration: none;
+}
+
+/* seudos clases */
+.enlace1:hover{
+    color: #900000;
+}
+
+.enlace1:visited {
+    color: yellowgreen;
+}
