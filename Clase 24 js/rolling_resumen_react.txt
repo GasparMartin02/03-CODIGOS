@@ -1,0 +1,85 @@
+REACT:
+
+1) COMPONENTES: son el bloque básico organizativo de los contenidos en React.
+
+- Declaración:
+	- Normalmente en archivo separado mediante sintaxis funcional, y exportado como constante.
+
+- Importación:
+	- Como cualquier otro módulo mediante sintaxis import.
+
+- Invocación:
+	- Dentro del JSX con sintaxis de markup (<Componente /> o <Componente></Componente>).
+
+- Capacidades:
+	- Un componente funcional no cuenta de forma predeterminada con todas las capacidades de control que podemos necesitar, las agregaremos según haga falta mediante HOOKS.
+
+
+2) EVENTOS: son sucesos que pueden darse por interacción del usuario (como el click sobre un botón) o durante el ciclo de vida del componente (al ser montado (renderizado), al actualizarse alguna variable dinámica, etc).
+
+- Enlace: https://react.dev/learn/responding-to-events
+
+- Gestión de eventos de interacción (click por ejemplo):
+	- Declarar una función y pasarla como parámetro al botón u otro elemento deseado, empleando la sintaxis onClick={handleClick} en el JSX.
+
+	- NO llamar a la función, pasarla como parámetro, si hacemos onClick={handleClick()}, la función se ejecutará al cargarse el componente, sin haber clickeado sobre el botón.
+
+	- Si se deben pasar parámetros a handleClick, encerrarlo en una función anónima:
+		onClick={() => handleClick(parametro1, parametro2)}
+
+	- Para prevenir comportamiento por defecto (por ej evento onSubmit de un form):
+		pasar al handler del evento un parámetro (nombre e, event, el que se quiera) e invocar e.preventDefault().
+
+
+3) HOOKS: los hooks son funcionalidades extra diseñadas en React, que podemos importar para utilizar en nuestros componentes.
+
+Hook para control de estado: useState().
+
+- Cuando se utiliza una variable de estado en lugar de una común, React vuelve a renderizar el componente cada vez que ésta cambia, el valor se mantiene con los renderizados y también en sincronía con cualquier visualización de la variable en el DOM.
+
+- En pocas palabras, si necesitamos que la salida visual de una variable en el DOM se mantenga en sincronía con los cambios que puedan hacerse en el código JS, la declaramos con useState().
+
+- Sintaxis: const [index, setIndex] = useState(0);
+
+- useState() recibe como parámetro el valor inicial para la variable (0 en este caso)
+
+- useState() devuelve SIEMPRE un array con 2 elementos: el primero la variable, y el otro la función para modificarla.
+
+- Utilizando DESESTRUCTURACION, en el ejemplo hemos llamado a la variable index, y a la función setIndex (es la convención habitual, mismo nombre con set adelante).
+
+
+Hook para efectos: useEffect().
+
+- Cuando necesitamos ejecutar algo en determinado momento (por ejemplo cuando el componente se monta, cuando se vuelve a renderizar, o cuando algún recurso específico de la página cambia).
+
+- Sintaxis: recibe 2 parámetros, el primero una función anónima y el 2do un array.
+
+useEffect(() => {
+	// Contenido a ejecutar
+	return () => {} // función de cleanup
+})
+
+- Cómo controlar cuándo se ejecuta la función anónima que recibe useEffect()?: lo hacemos mediante el 2do parámetro (array):
+
+1) Si es nulo, se ejecuta cada vez que se renderiza el componente.
+2) Si es vacío, se ejecuta solo al montarse el componente.
+3) Si contiene items, se ejecuta al cambiar el valor de cualquiera de estos items.
+
+Cada vez que el useEffect() es ejecutado, corre primero su función de cleanup, y luego el contenido previo de la función anónima. Esto es útil para limpiar cualquier rastro, como por ejemplo un addEventListener que realicemos al montar el componente.
+
+Ejemplo 1: si necesitamos recuperar datos de una fuente externa, colocamos el código dentro de un useEffect() con un array vacío. La solicitud externa se realizará solo 1 vez al montar el componente:
+
+useEffect(() => {
+	// Código datos fuente externa
+}, [])
+
+Ejemplo 2: si en cambio deseamos recuperar datos de acuerdo cada vez que se seleccione un nuevo valor en un elemento del DOM, activaremos esa variable con useState() y la agregaremos al array de useEffect():
+
+useEffect(() => {
+	// Código datos fuente externa
+}, [variableStateQueCambia])
+
+ATENCION!: es importante entender cuándo utilizar useState() y useEffect(), es muy común abusar de estos hooks.
+
+Si no necesitamos trackear una variable en el DOM, no hace falta declararla con useState().
+Reservemos useEffect() para cuando necesitamos hacer por ej. solicitudes externas (a una API, etc), o cuando necesitemos realmente recalcular algo relacionado a variables de estado que han cambiado en el DOM.
