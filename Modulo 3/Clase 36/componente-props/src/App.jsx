@@ -4,14 +4,17 @@ import Navbar from "./components/navbar/Navbar";
 const App = () => {
   const [count, setCount] = useState(0);
 
-  let usuario = {
+  const [user, setUser] =useState({
     name: 'Gaspar',
     lastname: 'Martin' 
-  };
+  })
+
   
   return (
     <>
-      <Navbar user={usuario}/>
+      <Navbar user={user} setUser={setUser}/>
+      <Navbar user={user} setUser={setUser}/>
+      <Navbar user={user} setUser={setUser}/>
       <main>
         <button onClick={ () =>{
           setCount(count + 1);
