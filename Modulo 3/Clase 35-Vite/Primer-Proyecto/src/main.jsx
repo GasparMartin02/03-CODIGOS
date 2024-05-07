@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import Navbar from './components/navbar/Navbar'
+import Galeria from './components/galeria-de-imagenes/Galeria'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Navbar />
+    <Galeria />
   </React.StrictMode>,
 )
