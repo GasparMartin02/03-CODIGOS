@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import ErrorPage from './pages/ErrorPage';
 import NavbarCustom from '../src/components/navbar/NavbarCustom';
+import RegisterPages from './pages/RegisterPages';
 
 const user = {
   islog: true,
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/admin' element={ user.islog && 
         user.role == 'admin' ? <AdminPage /> : <ErrorPage />} />
+        <Route path='/register' element={<RegisterPages/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
