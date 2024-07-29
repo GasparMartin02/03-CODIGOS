@@ -1,10 +1,15 @@
 import React from "react";
+import GameGallery from "../components/gameGallery/GameGallery";
+import { Container, Row } from "react-bootstrap";
 
 const HomePage = () => {
+
     return(
-        <div>HomePage
-            <a href="http://127.0.0.1:5173/login">Ir a login</a>
-        </div>
+        <Container>
+            <Row>
+                <GameGallery />
+            </Row>
+        </Container>
     )
 }
 

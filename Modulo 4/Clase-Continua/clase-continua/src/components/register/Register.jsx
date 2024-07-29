@@ -2,20 +2,23 @@ import {React, useState} from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { messages } from '../../utils/messages';
 import { alertGeneric } from '../../utils/alertCustom';
-import { useSearchParams } from 'react-router-dom';
-import { useSyncExternalStore } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import LoadingScreem from '../loadingScreen/LoadingScreen';
 
-const Register = () => {
-  const [formData, setFormData] = useState({
+  const Register = () => {
+   const [formData, setFormData] = useState({
     email:'',
     name:'',
     lastname:'',
     password:'',
     passwordCheck:'',
     termsAndConditions:''
-  });
-
+   });
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
+  const URL_BASE = import.meta.env.VITE_URL_BASE;
+  const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -25,17 +28,32 @@ const Register = () => {
     try {
       if(!validationEmail.test(formData.email)) return alertGeneric(messages.
       failEmailFormat, 'Upps...', 'error'), setMessage(messages.failEmailFormat);  
-      if(!validationEmail.test(formData.email)) return alertGeneric(messages.
-      failPasswordFormat, 'Upps...', 'error'), setMessage(messages.failPasswordFormat); 
-    } catch (error) {
+      if(!validationPass.test(formData.password)) return alertGeneric(messages.
+      failPasswordFormat, 'Upps...', 'error'), setMessage(messages.failPasswordFormat);
+      if(formData.password !== formData.passwordCheck) return alertGeneric(messages.
+      failPasswordCheck, 'Upps...', 'error'), setMessage(messages.failPasswordCheck); 
+      setIsLoading(true);
       
+      const { data } = await axios.get(`${URL_BASE}/users/?email=${formData.email}`);
+
+      if (data.length != 0 ) return alertGeneric(messages.userAlreadyExist, 'Upsss...', 'error');
+
+      await axios.post(`${URL_BASE}/users`, formData);
+      alertGeneric(messages.registerSuccess, 'Genial', 'success', () => navigate('/login'));
+    
+    } catch (error) {
+      alertGeneric(messages.serveErrorGeneric, 'Upsss...', 'error');
+    }finally{
+      setIsLoading(false);
     }
   };
 
   const handleChangeFormData = (e) => {
+    const texToLowerCase = (data) => data.toLowerCase();
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.name == 'password' || e.target.name == 'paswordCheck' ? e.target.value : 
+      texToLowerCase(e.target.value),
       termsAndConditions: e.target.checked,
     }));
   };
@@ -43,6 +61,9 @@ const Register = () => {
   return (
     <Container>
      <Row className='justify-content-center my-5'>
+      { isLoading
+        ? <LoadingScreem/>
+        :
       <Col xs={12} md={8} lg={6}>
        <Form onSubmit={handleSubmit}>
 
@@ -88,6 +109,7 @@ const Register = () => {
        </Button>
        </Form>
       </Col>
+      } 
      </Row>
     </Container>
     

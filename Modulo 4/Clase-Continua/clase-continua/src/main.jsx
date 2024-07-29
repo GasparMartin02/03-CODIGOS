@@ -24,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/admin' element={ user.islog && 
         user.role == 'admin' ? <AdminPage /> : <ErrorPage />} />
         <Route path='/register' element={<RegisterPages/>}/>
+        <Route path='*' element={<ErrorPage/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

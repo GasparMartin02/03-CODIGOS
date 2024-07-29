@@ -10,4 +10,5 @@ export const messages = {
     failPasswordFormat: 'La constraseña no cumple los requisitos. Debe contar con los 8 caracteres, una mayuscula, un numero al menos.',
     userAlreadyExist: 'El email ya se encuentra registrado.',
     emailOrPasswordBad: 'El usuario o la contraseña son incorrectos.',
+    serveErrorGeneric: 'Ha ocurrido un error. Contacte al administrador.',
 };
