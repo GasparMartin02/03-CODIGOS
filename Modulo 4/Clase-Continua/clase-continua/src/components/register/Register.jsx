@@ -4,7 +4,6 @@ import { messages } from '../../utils/messages';
 import { alertGeneric } from '../../utils/alertCustom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import LoadingScreem from '../loadingScreen/LoadingScreen';
 
   const Register = () => {
    const [formData, setFormData] = useState({
@@ -13,7 +12,8 @@ import LoadingScreem from '../loadingScreen/LoadingScreen';
     lastname:'',
     password:'',
     passwordCheck:'',
-    termsAndConditions:''
+    termsAndConditions:'',
+    date: new Date(),
    });
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false)
@@ -36,7 +36,7 @@ import LoadingScreem from '../loadingScreen/LoadingScreen';
       
       const { data } = await axios.get(`${URL_BASE}/users/?email=${formData.email}`);
 
-      if (data.length != 0 ) return alertGeneric(messages.userAlreadyExist, 'Upsss...', 'error');
+      if (data.length !== 0 ) return alertGeneric(messages.userAlreadyExist, 'Upsss...', 'error');
 
       await axios.post(`${URL_BASE}/users`, formData);
       alertGeneric(messages.registerSuccess, 'Genial', 'success', () => navigate('/login'));
@@ -49,11 +49,10 @@ import LoadingScreem from '../loadingScreen/LoadingScreen';
   };
 
   const handleChangeFormData = (e) => {
-    const texToLowerCase = (data) => data.toLowerCase();
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.name == 'password' || e.target.name == 'paswordCheck' ? e.target.value : 
-      texToLowerCase(e.target.value),
+      [e.target.name]: e.target.name == 'password' || e.target.name == 
+      'paswordCheck' ? e.target.value : e.target.value.toLowerCase(),
       termsAndConditions: e.target.checked,
     }));
   };
@@ -61,9 +60,6 @@ import LoadingScreem from '../loadingScreen/LoadingScreen';
   return (
     <Container>
      <Row className='justify-content-center my-5'>
-      { isLoading
-        ? <LoadingScreem/>
-        :
       <Col xs={12} md={8} lg={6}>
        <Form onSubmit={handleSubmit}>
 
@@ -104,12 +100,11 @@ import LoadingScreem from '../loadingScreen/LoadingScreen';
         <Col className='text-danger my-3'>
         <strong>{message}</strong>
         </Col>
-       <Button variant="primary" type="submit">
-         Register
+       <Button variant="primary" type="submit" disabled={isLoading}>
+         {isLoading ? 'Cargando...' : 'Registrarme'}
        </Button>
        </Form>
       </Col>
-      } 
      </Row>
     </Container>
     

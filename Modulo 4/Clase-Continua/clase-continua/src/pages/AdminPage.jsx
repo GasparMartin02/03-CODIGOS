@@ -1,8 +1,9 @@
 import React from 'react'
+import { UserPanel } from '../components/adminTools/UserPanel'
 
 function AdminPage() {
   return (
-    <div>Admin Page</div>
+    <UserPanel />
   )
 }
 

@@ -6,7 +6,7 @@ const NavbarCustom = () => {
   return (
     <Navbar className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+        <Link to='/'><Navbar.Brand>Home</Navbar.Brand></Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>

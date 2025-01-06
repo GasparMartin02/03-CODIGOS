@@ -1,17 +1,16 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-function GameCard() {
+const GameCard = ({data}) => {
+  const { name, id, images} = data;
+  const navigate = useNavigate;
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card className='col-12 col-lg-3 mx-3 my-3 g-0'>
+      <Card.Img variant="top" src={images[0]}/>
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Title>{name}</Card.Title>
+        <Button variant="primary" onClick={() => navigate(`/detailgame/${id}`)}>Go somewhere</Button>
       </Card.Body>
     </Card>
   )

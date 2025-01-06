@@ -8,6 +8,7 @@ import AdminPage from './pages/AdminPage';
 import ErrorPage from './pages/ErrorPage';
 import NavbarCustom from '../src/components/navbar/NavbarCustom';
 import RegisterPages from './pages/RegisterPages';
+import DetailPage from './pages/DetailPage';
 
 const user = {
   islog: true,
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         user.role == 'admin' ? <AdminPage /> : <ErrorPage />} />
         <Route path='/register' element={<RegisterPages/>}/>
         <Route path='*' element={<ErrorPage/>}/>
+        <Route path='/detailGame/:id' element={<DetailPage/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
